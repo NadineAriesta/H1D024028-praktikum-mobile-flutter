@@ -66,9 +66,9 @@ Implementasi struktur data Queue menggunakan Dart telah berhasil dilakukan. Clas
 
 # Modul 2 Pengenalan dan Desain Framework Flutter
 
-Aplikasi Flutter sederhana yang dibuat untuk mempelajari dasar-dasar widget dan desain antarmuka pada Flutter. Aplikasi ini berisi form input produk, halaman detail produk, dan daftar produk menggunakan `ListView`.
+## Deskripsi
 
----
+Aplikasi Flutter sederhana yang dibuat untuk mempelajari dasar-dasar widget dan desain antarmuka pada Flutter. Aplikasi ini berisi form input produk, halaman detail produk, dan daftar produk menggunakan `ListView`.
 
 ## 📱 Tentang Aplikasi
 
@@ -82,27 +82,19 @@ Aplikasi ini dibangun menggunakan **Flutter** (bahasa pemrograman **Dart**) dan 
 - Menampilkan daftar data dengan `ListView`, `Card`, dan `ListTile`
 - Memisahkan kode ke beberapa file `.dart`
 
----
-
 ## 🖼️ Screenshot
 
 ### 1. Hello World pada Flutter
 
 ![Form Produk](screenshots/Gambar2.png)
 
----
-
 ### 2. Kolom pada flutter
 
 ![Detail Produk](screenshots/Gambar3.png)
 
----
-
 ### 3. List Data Produk
 
 ![List Data Produk](screenshots/Gambar4.png)
-
----
 
 ## 📂 Struktur Folder
 
@@ -118,8 +110,6 @@ lib/
     └── produk_page.dart   # List data produk (ListView)
 ```
 
----
-
 ## 🧩 Penjelasan File
 
 | File | Jenis Widget | Keterangan |
@@ -132,7 +122,7 @@ lib/
 | `produk_detail.dart` | StatelessWidget | Menerima data (kode, nama, harga) lewat constructor dan menampilkannya |
 | `produk_page.dart` | StatefulWidget | Menampilkan 3 data produk dalam `ListView` berisi `Card` |
 
----
+
 
 ## ▶️ Cara Menjalankan
 
@@ -163,3 +153,111 @@ lib/
    ```bash
    flutter run
    ```
+
+# Modul 3 Flutter Routes, Side Menu, Login dan Local Storage
+
+## Deskripsi
+
+Pada praktikum Modul 3 ini dilakukan pembuatan aplikasi Flutter yang memiliki fitur login, perpindahan halaman (routes), side menu, dan penyimpanan data menggunakan local storage.
+
+Aplikasi ini menggunakan package `shared_preferences` untuk menyimpan username yang dimasukkan saat login. Setelah berhasil login, pengguna akan diarahkan ke halaman Home. Selain itu, terdapat side menu yang digunakan untuk berpindah ke halaman Home dan About.
+
+### 1. Membuat Project Flutter
+Membuat project Flutter baru melalui terminal dengan perintah:
+
+```bash
+flutter create nama_aplikasi
+```
+
+Setelah project berhasil dibuat, buka folder project menggunakan Visual Studio Code.
+
+### 2. Menambahkan Dependencies
+Menambahkan package `shared_preferences` pada file `pubspec.yaml` untuk menggunakan fitur local storage.
+
+```yaml
+dependencies:
+  shared_preferences: ^2.0.17
+```
+
+Kemudian jalankan perintah:
+
+```bash
+flutter pub get
+```
+
+### 3. Membuat Halaman Login
+Membuat file `login_page.dart` di dalam folder `lib` dengan menggunakan `StatefulWidget`.
+
+Pada halaman login terdapat beberapa fungsi, yaitu:
+
+- `_saveUsername()` untuk menyimpan username ke local storage.
+- `_showInput()` untuk menampilkan input username dan password.
+- `_showDialog()` untuk menampilkan pesan atau alert login.
+- `build()` untuk membuat tampilan halaman login.
+
+Login menggunakan username dan password `admin`. Jika data yang dimasukkan benar, aplikasi akan menampilkan pesan berhasil login dan mengarahkan pengguna ke halaman Home. Jika salah, pengguna akan kembali ke halaman Login.
+
+### 4. Mengatur Halaman Utama
+Pada file `main.dart`, halaman Login diatur sebagai halaman pertama yang ditampilkan ketika aplikasi dijalankan.
+
+### 5. Membuat Home Page
+Membuat file `home_page.dart` di dalam folder `lib`.
+
+Pada halaman Home terdapat fungsi `_loadUsername()` yang digunakan untuk mengambil username yang sebelumnya telah disimpan di local storage. Username tersebut kemudian ditampilkan pada halaman Home.
+
+### 6. Membuat Side Menu
+Membuat file `sidemenu.dart` untuk menampilkan menu navigasi menggunakan komponen `Drawer` dan `ListTile`.
+
+Side menu digunakan untuk memudahkan pengguna berpindah halaman. Pada praktikum ini terdapat dua menu, yaitu:
+- **Home:** Untuk menuju halaman utama.
+- **About:** Untuk menuju halaman About.
+
+### 7. Membuat Halaman About
+Membuat file `about_page.dart` sebagai halaman About. Halaman ini dapat diakses melalui menu About pada side menu.
+
+## 🖼️ Screenshot
+
+### 1. Halaman Login
+
+![Halaman Login](screenshots/Gambar5.png)
+
+### 2. Halaman Home
+
+![Halaman Home](screenshots/Gambar6.png)
+
+### 3. Side Menu
+
+![Side Menu](screenshots/Gambar7.png)
+
+## 📂 Struktur Folder
+
+```text
+nama_aplikasi/
+├── lib/
+│   ├── main.dart
+│   ├── login_page.dart
+│   ├── home_page.dart
+│   ├── sidemenu.dart
+│   └── about_page.dart
+├── pubspec.yaml
+└── README.md
+```
+
+## ▶️ Cara Menjalankan
+
+1. Buka folder project menggunakan Visual Studio Code.
+2. Jalankan perintah berikut untuk mengunduh dependencies:
+
+   ```bash
+   flutter pub get
+   ```
+
+3. Jalankan aplikasi menggunakan emulator atau perangkat yang terhubung:
+
+   ```bash
+   flutter run
+   ```
+
+## Kesimpulan
+
+Berdasarkan praktikum yang telah dilakukan, dapat dipahami cara membuat halaman login, mengatur perpindahan halaman menggunakan routes, membuat side menu menggunakan Drawer, serta menyimpan dan mengambil data username menggunakan shared_preferences sebagai local storage.

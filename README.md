@@ -1,4 +1,4 @@
-# Modul 1 Implementasi Queue Menggunakan Dart
+# Modul 1 - Implementasi Queue Menggunakan Dart
 
 ## Deskripsi
 
@@ -64,7 +64,7 @@ Hasil tersebut menunjukkan bahwa implementasi Queue telah berjalan sesuai prinsi
 
 Implementasi struktur data Queue menggunakan Dart telah berhasil dilakukan. Class `Queue` memiliki method `enqueue()` untuk menambahkan elemen dan `dequeue()` untuk mengambil serta menghapus elemen paling depan. Hasil pengujian menunjukkan bahwa program berjalan sesuai prinsip FIFO.
 
-# Modul 2 Pengenalan dan Desain Framework Flutter
+# Modul 2 - Pengenalan dan Desain Framework Flutter
 
 ## Deskripsi
 
@@ -154,7 +154,7 @@ lib/
    flutter run
    ```
 
-# Modul 3 Flutter Routes, Side Menu, Login dan Local Storage
+# Modul 3 - Flutter Routes, Side Menu, Login dan Local Storage
 
 ## Deskripsi
 
@@ -261,3 +261,145 @@ nama_aplikasi/
 ## Kesimpulan
 
 Berdasarkan praktikum yang telah dilakukan, dapat dipahami cara membuat halaman login, mengatur perpindahan halaman menggunakan routes, membuat side menu menggunakan Drawer, serta menyimpan dan mengambil data username menggunakan shared_preferences sebagai local storage.
+
+# MODUL 4 - CRUD (CREATE, READ, UPDATE, DELETE) FLUTTER
+
+## Deskripsi
+
+Pada praktikum Modul 4 ini dilakukan pembuatan aplikasi Toko Kita dengan menerapkan konsep CRUD (Create, Read, Update, Delete). Praktikum dimulai dengan membuat REST API menggunakan CodeIgniter 4 dan MySQL, kemudian dilanjutkan dengan pembuatan tampilan aplikasi menggunakan Flutter.
+
+Aplikasi ini memiliki beberapa halaman, yaitu Login, Registrasi, List Produk, Tambah Produk, Detail Produk, dan Ubah Produk.
+
+## A. Tools yang Digunakan
+
+1. Visual Studio Code
+2. Flutter dan Dart
+3. XAMPP
+4. CodeIgniter 4
+5. MySQL
+6. Postman
+7. Android Studio dan Android Emulator
+
+## B. Pembuatan REST API
+
+### 1. Membuat Database
+
+Database dibuat menggunakan phpMyAdmin dengan nama `toko_api`. Database ini memiliki tiga tabel, yaitu:
+
+- `member`, untuk menyimpan data pengguna.
+- `member_token`, untuk menyimpan token autentikasi pengguna.
+- `produk`, untuk menyimpan data produk.
+
+### 2. Konfigurasi CodeIgniter 4
+
+Project CodeIgniter 4 dibuat dengan nama `toko-api`. Konfigurasi database dilakukan melalui file `app/Config/Database.php` agar aplikasi dapat terhubung dengan database MySQL `toko_api`.
+
+### 3. Membuat Restful Controller
+
+File `RestfulController.php` dibuat pada folder `app/Controllers`. Controller ini digunakan untuk mengatur format respons REST API dalam bentuk JSON.
+
+### 4. Membuat API Registrasi
+
+API Registrasi dibuat menggunakan model `MRegistrasi.php` dan controller `RegistrasiController.php`.
+
+Endpoint yang digunakan:
+
+- URL: `/registrasi`
+- Method: `POST`
+
+Data yang diperlukan untuk registrasi terdiri dari nama, email, dan password. Password disimpan dalam bentuk hash menggunakan fungsi `password_hash()`.
+
+### 5. Membuat API Login
+
+API Login dibuat menggunakan model `MMember.php`, `MLogin.php`, dan controller `LoginController.php`.
+
+Endpoint yang digunakan:
+
+- URL: `/login`
+- Method: `POST`
+
+Proses login dilakukan dengan memeriksa email dan password pengguna. Jika data sesuai, sistem akan membuat token autentikasi yang digunakan sebagai identitas pengguna.
+
+### 6. Membuat API CRUD Produk
+
+API Produk dibuat menggunakan model `MProduk.php` dan controller `ProdukController.php`.
+
+API ini memiliki lima fungsi utama:
+
+| Operasi | Endpoint | Method |
+|---|---|---|
+| Create Produk | `/produk` | POST |
+| List Produk | `/produk` | GET |
+| Detail Produk | `/produk/{id}` | GET |
+| Update Produk | `/produk/{id}` | PUT |
+| Delete Produk | `/produk/{id}` | DELETE |
+
+Setiap fungsi digunakan untuk menambahkan, menampilkan, mengubah, dan menghapus data produk pada database.
+
+## C. Pembuatan Aplikasi Flutter
+
+### 1. Membuat Project Flutter
+
+Project Flutter dibuat dengan nama `tokokita` dan disimpan di dalam folder `modul4` pada repository praktikum Flutter.
+
+### 2. Membuat Model
+
+Folder `model` dibuat di dalam folder `lib` untuk menyimpan model data yang digunakan dalam aplikasi.
+
+File model yang dibuat:
+
+- `login.dart`, untuk mengelola data respons login.
+- `registrasi.dart`, untuk mengelola data respons registrasi.
+- `produk.dart`, untuk mengelola data produk.
+
+### 3. Membuat Halaman Registrasi
+
+Halaman Registrasi dibuat menggunakan file `registrasi_page.dart`. Halaman ini memiliki empat input, yaitu Nama, Email, Password, dan Konfirmasi Password. Pada halaman ini juga terdapat validasi untuk memastikan data yang dimasukkan sesuai dengan ketentuan.
+
+### 4. Membuat Halaman Login
+
+Halaman Login dibuat menggunakan file `login_page.dart`. Halaman ini memiliki dua input, yaitu Email dan Password, serta tombol Login. Terdapat juga menu Registrasi yang dapat digunakan untuk berpindah ke halaman pendaftaran pengguna.
+
+### 5. Membuat Form Produk
+
+File `produk_form.dart` digunakan untuk membuat form penambahan dan perubahan data produk. Form ini memiliki tiga input, yaitu Kode Produk, Nama Produk, dan Harga. Form menggunakan satu tampilan yang dapat digunakan untuk menambahkan maupun mengubah data produk.
+
+### 6. Membuat Halaman Detail Produk
+
+File `produk_detail.dart` digunakan untuk menampilkan informasi detail produk berupa kode, nama, dan harga produk. Pada halaman ini terdapat tombol EDIT untuk membuka form perubahan produk dan DELETE untuk menampilkan dialog konfirmasi penghapusan.
+
+### 7. Membuat Halaman List Produk
+
+File `produk_page.dart` digunakan untuk menampilkan daftar produk dalam bentuk list. Halaman ini dilengkapi tombol tambah produk dan menu Logout. Data produk yang ditampilkan pada tahap ini masih menggunakan data contoh sesuai materi praktikum.
+
+## D. Screenshot
+
+### 1. Halaman Registrasi
+
+![Halaman Registrasi](screenshots/Gambar8.png)
+
+### 2. Halaman Login
+
+![Halaman Login](screenshots/Gambar9.png)
+
+### 3. Halaman List Produk
+
+![Halaman List Produk](screenshots/Gambar10.png)
+
+### 4. Halaman Tambah Produk
+
+![Halaman Tambah Produk](screenshots/Gambar11.png)
+
+### 5. Halaman Detail Produk
+
+![Halaman Detail Produk](screenshots/Gambar12.png)
+
+### 6. Halaman Ubah Produk
+
+![Halaman Ubah Produk](screenshots/Gambar13.png)
+
+## E. Kesimpulan
+
+Melalui praktikum Modul 4, dapat dipahami cara membuat REST API menggunakan CodeIgniter 4 dan MySQL serta membuat tampilan aplikasi mobile menggunakan Flutter.
+
+Praktikum ini juga memberikan pemahaman mengenai konsep CRUD, pembuatan model, penggunaan form, validasi input, serta navigasi antarhalaman pada Flutter.

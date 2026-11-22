@@ -12,9 +12,9 @@ class Login {
     return Login(
       code: obj['code'],
       status: obj['status'],
-      token: obj['data']['token'],
-      userID: int.tryParse(obj['data']['user']['id'].toString()),
-      userEmail: obj['data']['user']['email'],
+      token: obj['data'] is Map ? obj['data']['token'] : null,
+      userID: obj['data'] is Map ? int.tryParse(obj['data']['user']['id'].toString()) : null,
+      userEmail: obj['data'] is Map ? obj['data']['user']['email'] : null,
     );
   }
 }

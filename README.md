@@ -403,3 +403,142 @@ File `produk_page.dart` digunakan untuk menampilkan daftar produk dalam bentuk l
 Melalui praktikum Modul 4, dapat dipahami cara membuat REST API menggunakan CodeIgniter 4 dan MySQL serta membuat tampilan aplikasi mobile menggunakan Flutter.
 
 Praktikum ini juga memberikan pemahaman mengenai konsep CRUD, pembuatan model, penggunaan form, validasi input, serta navigasi antarhalaman pada Flutter.
+
+Siap, bagian **Hasil Output** diganti menjadi **Screenshot**, dan bagian **Analisis Hasil** dihapus. Berikut README yang sudah direvisi:
+
+# Modul 5 - Implementasi CRUD Menggunakan Flutter
+
+## Deskripsi
+
+Project ini dibuat untuk memenuhi penugasan Modul 5 Pemrograman Mobile, yaitu mengimplementasikan fitur CRUD (*Create, Read, Update, Delete*) pada aplikasi mobile menggunakan Flutter dan bahasa pemrograman Dart.
+
+Aplikasi yang dibuat bernama **Toko Kita**, yaitu aplikasi sederhana untuk mengelola data produk. Aplikasi ini menggunakan REST API sebagai penghubung antara aplikasi Flutter dengan database. Selain itu, terdapat fitur registrasi, login, dan logout untuk mengelola autentikasi pengguna.
+
+## 📂 Struktur Project
+
+```
+modul5/
+├── lib/
+│   ├── bloc/
+│   │   ├── login_bloc.dart
+│   │   ├── logout_bloc.dart
+│   │   ├── registrasi_bloc.dart
+│   │   └── produk_bloc.dart
+│   ├── helpers/
+│   │   ├── api.dart
+│   │   ├── api_exception.dart
+│   │   ├── api_url.dart
+│   │   └── user_info.dart
+│   ├── model/
+│   │   ├── login.dart
+│   │   ├── registrasi.dart
+│   │   └── produk.dart
+│   ├── ui/
+│   │   ├── login_page.dart
+│   │   ├── registrasi_page.dart
+│   │   ├── produk_page.dart
+│   │   ├── produk_detail.dart
+│   │   └── produk_form.dart
+│   ├── widget/
+│   │   ├── success_dialog.dart
+│   │   └── warning_dialog.dart
+│   └── main.dart
+├── .gitignore
+├── pubspec.lock
+├── pubspec.yaml
+└── README.md
+```
+
+## Implementasi
+
+### 1. Helper Modul
+
+Folder `helpers` digunakan untuk membantu proses komunikasi antara aplikasi Flutter dengan REST API.
+
+Beberapa file yang dibuat yaitu:
+
+- `user_info.dart` digunakan untuk menyimpan dan mengambil token serta ID pengguna menggunakan Shared Preferences.
+- `api_exception.dart` digunakan untuk menangani kesalahan saat melakukan request ke REST API.
+- `api.dart` digunakan untuk mengirim dan menerima request menggunakan method POST, GET, dan DELETE.
+- `api_url.dart` digunakan untuk menyimpan alamat URL dan endpoint REST API.
+
+### 2. Bloc
+
+Folder `bloc` digunakan untuk mengatur proses pengolahan data dan komunikasi dengan REST API.
+
+Beberapa class yang dibuat yaitu:
+
+- `registrasi_bloc.dart` digunakan untuk melakukan registrasi pengguna.
+- `login_bloc.dart` digunakan untuk melakukan proses login.
+- `logout_bloc.dart` digunakan untuk menghapus data autentikasi pengguna.
+- `produk_bloc.dart` digunakan untuk mengambil, menambahkan, mengubah, dan menghapus data produk.
+
+### 3. Model
+
+Folder `model` digunakan untuk membuat class yang merepresentasikan data dari REST API.
+
+Beberapa model yang digunakan yaitu `login.dart`, `registrasi.dart`, dan `produk.dart`.
+
+### 4. Halaman Login dan Registrasi
+
+Halaman login digunakan untuk memasukkan email dan password pengguna. Jika login berhasil, token dan ID pengguna akan disimpan menggunakan Shared Preferences, kemudian pengguna diarahkan ke halaman daftar produk.
+
+Halaman registrasi digunakan untuk membuat akun baru dengan mengisi nama, email, password, dan konfirmasi password. Terdapat validasi input serta dialog untuk menampilkan pesan berhasil atau gagal.
+
+### 5. Fitur CRUD Produk
+
+Implementasi CRUD merupakan fitur utama pada aplikasi Toko Kita.
+
+- **Create:** Menambahkan data produk baru melalui halaman form produk dengan mengisi kode produk, nama produk, dan harga produk.
+- **Read:** Menampilkan daftar produk yang diperoleh dari REST API serta melihat detail produk.
+- **Update:** Mengubah data produk yang sudah tersimpan melalui halaman form ubah produk.
+- **Delete:** Menghapus data produk melalui halaman detail dengan konfirmasi sebelum penghapusan.
+
+### 6. Widget Dialog
+
+Folder `widget` berisi dua komponen dialog yang digunakan untuk memberikan informasi kepada pengguna.
+
+- `success_dialog.dart` digunakan untuk menampilkan pesan ketika proses berhasil.
+- `warning_dialog.dart` digunakan untuk menampilkan pesan ketika proses mengalami kegagalan.
+
+## ▶️ Cara Menjalankan Program
+
+Pastikan Flutter SDK sudah terinstal dan REST API sudah dijalankan serta dapat diakses oleh emulator atau perangkat Android.
+
+Buka terminal pada direktori project, kemudian jalankan perintah berikut:
+
+```
+flutter pub get
+```
+
+Setelah dependencies berhasil diunduh, jalankan aplikasi menggunakan perintah:
+
+```
+flutter run
+```
+
+## 🖼️ Screenshot
+
+### 1. Halaman Registrasi
+
+Jika registrasi berhasil, akan muncul pesan seperti berikut.
+
+![Halaman Registrasi](screenshots/Gambar14.png)
+
+### 2. Halaman Login
+
+Jika login gagal, akan muncul pesan seperti berikut.
+
+![Halaman Login](screenshots/Gambar15.png)
+
+### 3. List Produk
+
+Berikut merupakan tampilan halaman list produk.
+
+![List Produk 1](screenshots/Gambar16.png) ![List Produk 2](screenshots/Gambar17.png)
+
+## Kesimpulan
+
+Implementasi CRUD menggunakan Flutter telah dilakukan melalui pembuatan aplikasi Toko Kita. Aplikasi ini memiliki fitur registrasi, login, logout, serta pengelolaan data produk yang meliputi Create, Read, Update, dan Delete.
+
+Selain itu, penggunaan REST API, Shared Preferences, Bloc, dan Model membantu mengatur proses komunikasi serta pengolahan data pada aplikasi. Dengan demikian, aplikasi dapat digunakan untuk mempelajari penerapan CRUD dan integrasi REST API pada pengembangan aplikasi mobile.
